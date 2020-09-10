@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import DashboardActions from "./DashboardActions";
 import { getCurrentProfile } from "../../actions/profile";
 
 const Dashboard = ({
@@ -21,10 +22,9 @@ const Dashboard = ({
       </p>
       {profile !== null ? (
         <Fragment>
+          <DashboardActions />
           <div className="my-2">
-            <button className="btn btn-danger">
-              <i className="fas fa-user-minus" /> Delete My Account
-            </button>
+            <button className="btn btn-danger">Delete My Account</button>
           </div>
         </Fragment>
       ) : (
