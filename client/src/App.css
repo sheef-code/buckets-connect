@@ -1,8 +1,9 @@
 /* Global Styles */
 :root {
-  --primary-color: #17a2b8;
+  --primary-color: #f08028;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
+  --bg-primary-color: #484e53;
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
@@ -157,10 +158,14 @@ img {
 }
 
 .btn-primary,
-.bg-primary,
 .badge-primary,
 .alert-primary {
   background: var(--primary-color);
+  color: #fff;
+}
+
+.bg-primary {
+  background: var(--bg-primary-color);
   color: #fff;
 }
 
@@ -176,8 +181,8 @@ img {
 .bg-dark,
 .badge-dark,
 .alert-dark {
-  background: var(--dark-color);
-  color: #fff;
+  background: #f6f6f6;
+  color: var(--dark-color);
 }
 
 .btn-danger,
@@ -226,7 +231,7 @@ img {
 
 /* Overlay */
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   position: absolute;
   top: 0;
   left: 0;
@@ -308,8 +313,8 @@ button {
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px var(--primary-color);
-  opacity: 0.9;
+  opacity: 0.95;
+  border-bottom: 1px solid var(--dark-color);
 }
 
 .navbar ul {
@@ -317,7 +322,7 @@ button {
 }
 
 .navbar a {
-  color: #fff;
+  color: var(--dark-color);
   padding: 0.45rem;
   margin: 0 0.25rem;
 }
@@ -347,6 +352,14 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.landing-inner h1 {
+  filter: drop-shadow(2px 4px 6px black) !important;
+  background: -webkit-linear-gradient(#fbd506, #d64f0b) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-transform: uppercase;
 }
 
 /* Profiles Page */

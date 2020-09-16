@@ -12,7 +12,7 @@ const Landing = ({ isAuthenticated }) => {
     <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1 className="x-large">Gamer Pal</h1>
+          <h1 className="x-large">Join For Free</h1>
           <p className="lead">
             Create a gamer profile, share gaming posts and meet other gamers.
           </p>
