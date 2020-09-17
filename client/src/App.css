@@ -3,7 +3,6 @@
   --primary-color: #f08028;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
-  --bg-primary-color: #484e53;
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
@@ -165,7 +164,7 @@ img {
 }
 
 .bg-primary {
-  background: var(--bg-primary-color);
+  background: var(--dark-color);
   color: #fff;
 }
 
@@ -231,7 +230,7 @@ img {
 
 /* Overlay */
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
   left: 0;
@@ -314,7 +313,7 @@ button {
   width: 100%;
   top: 0;
   opacity: 0.95;
-  border-bottom: 1px solid var(--dark-color);
+  border-bottom: 1px dashed #ccc;
 }
 
 .navbar ul {
@@ -373,6 +372,10 @@ button {
   margin-bottom: 1rem;
 }
 
+.profile div h2 {
+  color: var(--primary-color);
+}
+
 /* Profile Page */
 .profile-grid {
   display: grid;
@@ -397,13 +400,17 @@ button {
   width: 250px;
 }
 
+.profile-top h1 {
+  color: var(--primary-color);
+}
+
 .profile-top .icons a {
-  color: #fff;
+  color: var(--primary-color);
   margin: 0 0.3rem;
 }
 
 .profile-top .icons a:hover {
-  color: var(--dark-color);
+  color: #fff;
 }
 
 .profile-about {
@@ -566,8 +573,7 @@ button {
       "top"
       "about"
       "exp"
-      "edu"
-      "github";
+      "edu";
   }
 
   .profile-about .skills {
