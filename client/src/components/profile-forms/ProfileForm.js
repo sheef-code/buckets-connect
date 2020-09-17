@@ -9,7 +9,7 @@ const initialState = {
   website: "",
   location: "",
   status: "",
-  skills: "",
+  platform: "",
   githubusername: "",
   bio: "",
   twitter: "",
@@ -39,18 +39,17 @@ const ProfileForm = ({
       for (const key in profile.social) {
         if (key in profileData) profileData[key] = profile.social[key];
       }
-      if (Array.isArray(profileData.skills))
-        profileData.skills = profileData.skills.join(", ");
+      if (Array.isArray(profileData.platform))
+        profileData.platform = profileData.platform.join(", ");
       setFormData(profileData);
     }
   }, [loading, getCurrentProfile, profile]);
 
   const {
-    company,
     website,
     location,
     status,
-    skills,
+    platform,
     githubusername,
     bio,
     twitter,
@@ -78,30 +77,17 @@ const ProfileForm = ({
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <select name="status" value={status} onChange={onChange}>
-            <option>* Select Professional Status</option>
-            <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
-            <option value="Manager">Manager</option>
-            <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
-            <option value="Intern">Intern</option>
-            <option value="Other">Other</option>
+            <option>* Select Gamer Status</option>
+            <option value="Classic Gamer">Classic Gamer</option>
+            <option value="Casual Gamer">Casual Gamer</option>
+            <option value="Hardcore Gamer">Hardcore Gamer</option>
+            <option value="Hardcore Gamer">Competitive Gamer</option>
+            <option value="Pro Gamer (Verified)" disabled>
+              Pro Gamer (Verified)
+            </option>
           </select>
           <small className="form-text">
-            Give us an idea of where you are at in your career
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Company"
-            name="company"
-            value={company}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            Could be your own company or one you work for
+            Give us an idea of what kind of gamer you are
           </small>
         </div>
         <div className="form-group">
@@ -113,7 +99,7 @@ const ProfileForm = ({
             onChange={onChange}
           />
           <small className="form-text">
-            Could be your own or a company website
+            Could be a link to a discord server or gamer profile.
           </small>
         </div>
         <div className="form-group">
@@ -125,19 +111,19 @@ const ProfileForm = ({
             onChange={onChange}
           />
           <small className="form-text">
-            City & state suggested (eg. Boston, MA)
+            City & state suggested (eg. Los Angeles, CA)
           </small>
         </div>
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Skills"
-            name="skills"
-            value={skills}
+            placeholder="* Platform"
+            name="platform"
+            value={platform}
             onChange={onChange}
           />
           <small className="form-text">
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
+            Please use comma separated values (eg. PS4, Xbox One, PC, Mobile)
           </small>
         </div>
         <div className="form-group">

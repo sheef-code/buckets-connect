@@ -41,7 +41,7 @@ router.post(
     auth,
     [
       check("status", "Status is required").not().isEmpty(),
-      check("skills", "Skills is required").not().isEmpty(),
+      check("platform", "platform is required").not().isEmpty(),
     ],
   ],
   async (req, res) => {
@@ -54,7 +54,7 @@ router.post(
       location,
       website,
       bio,
-      skills,
+      platform,
       status,
       githubusername,
       youtube,
@@ -73,9 +73,9 @@ router.post(
           ? normalize(website, { forceHttps: true })
           : "",
       bio,
-      skills: Array.isArray(skills)
-        ? skills
-        : skills.split(",").map((skill) => " " + skill.trim()),
+      platform: Array.isArray(platform)
+        ? platform
+        : platform.split(",").map((skill) => " " + skill.trim()),
       status,
       githubusername,
     };
