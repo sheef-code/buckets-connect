@@ -425,6 +425,11 @@ button {
   text-align: center;
 }
 
+.platform {
+  display: flex;
+  justify-content: center;
+}
+
 .profile-exp {
   grid-area: exp;
 }
