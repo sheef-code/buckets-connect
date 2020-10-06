@@ -94,17 +94,17 @@ export const createProfile = (formData, history, edit = false) => async (
   }
 };
 
-// Add Experience
-export const addExperience = (formData, history) => async (dispatch) => {
+// Add recently played game
+export const addRecent = (formData, history) => async (dispatch) => {
   try {
-    const res = await api.put("/profile/experience", formData);
+    const res = await api.put("/profile/recent", formData);
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data,
     });
 
-    dispatch(setAlert("Experience Added", "success"));
+    dispatch(setAlert("Game Added", "success"));
 
     history.push("/dashboard");
   } catch (err) {
@@ -121,17 +121,17 @@ export const addExperience = (formData, history) => async (dispatch) => {
   }
 };
 
-// Add Education
-export const addEducation = (formData, history) => async (dispatch) => {
+// Add favorite games
+export const addFavorite = (formData, history) => async (dispatch) => {
   try {
-    const res = await api.put("/profile/education", formData);
+    const res = await api.put("/profile/favorite", formData);
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data,
     });
 
-    dispatch(setAlert("Education Added", "success"));
+    dispatch(setAlert("Favorite Game Added", "success"));
 
     history.push("/dashboard");
   } catch (err) {
@@ -148,17 +148,17 @@ export const addEducation = (formData, history) => async (dispatch) => {
   }
 };
 
-// Delete experience
-export const deleteExperience = (id) => async (dispatch) => {
+// Delete recently played game
+export const deleteRecent = (id) => async (dispatch) => {
   try {
-    const res = await api.delete(`/profile/experience/${id}`);
+    const res = await api.delete(`/profile/recent/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data,
     });
 
-    dispatch(setAlert("Experience Removed", "success"));
+    dispatch(setAlert("Game Removed", "success"));
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
@@ -167,17 +167,17 @@ export const deleteExperience = (id) => async (dispatch) => {
   }
 };
 
-// Delete education
-export const deleteEducation = (id) => async (dispatch) => {
+// Delete Favorite Games
+export const deleteFavorite = (id) => async (dispatch) => {
   try {
-    const res = await api.delete(`/profile/education/${id}`);
+    const res = await api.delete(`/profile/favorite/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data,
     });
 
-    dispatch(setAlert("Education Removed", "success"));
+    dispatch(setAlert("Favorite Game Removed", "success"));
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
