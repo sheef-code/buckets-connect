@@ -158,20 +158,19 @@ router.delete("/", auth, async (req, res) => {
   }
 });
 
-// @route    PUT api/profile/experience
-// @desc     Add profile experience
+// @route    PUT api/profile/recent
+// @desc     Add recently played games to profile
 // @access   Private
 router.put(
-  "/experience",
+  "/recent",
   [
     auth,
     [
       check("title", "Title is required").not().isEmpty(),
-      check("company", "Company is required").not().isEmpty(),
-      check("from", "From date is required and needs to be from the past")
+      check("platform", "Platform is required").not().isEmpty(),
+      check("hours", "From date is required and needs to be from the past")
         .not()
-        .isEmpty()
-        .custom((value, { req }) => (req.body.to ? value < req.body.to : true)),
+        .isEmpty(),
     ],
   ],
   async (req, res) => {
@@ -180,30 +179,18 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const {
-      title,
-      company,
-      location,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
+    const { title, platform, hours } = req.body;
 
-    const newExp = {
+    const recentPlayed = {
       title,
-      company,
-      location,
-      from,
-      to,
-      current,
-      description,
+      platform,
+      hours,
     };
 
     try {
       const profile = await Profile.findOne({ user: req.user.id });
 
-      profile.experience.unshift(newExp);
+      profile.recent.unshift(recentPlayed);
 
       await profile.save();
 
@@ -215,16 +202,16 @@ router.put(
   }
 );
 
-// @route    DELETE api/profile/experience/:exp_id
-// @desc     Delete experience from profile
+// @route    DELETE api/profile/recent/:rec_id
+// @desc     Delete recently played games from profile
 // @access   Private
 
-router.delete("/experience/:exp_id", auth, async (req, res) => {
+router.delete("/recent/:rec_id", auth, async (req, res) => {
   try {
     const foundProfile = await Profile.findOne({ user: req.user.id });
 
-    foundProfile.experience = foundProfile.experience.filter(
-      (exp) => exp._id.toString() !== req.params.exp_id
+    foundProfile.recent = foundProfile.recent.filter(
+      (rec) => rec._id.toString() !== req.params.rec_id
     );
 
     await foundProfile.save();
@@ -235,21 +222,19 @@ router.delete("/experience/:exp_id", auth, async (req, res) => {
   }
 });
 
-// @route    PUT api/profile/education
-// @desc     Add profile education
+// @route    PUT api/profile/favorite
+// @desc     Add favorite games to profile
 // @access   Private
 router.put(
-  "/education",
+  "/favorite",
   [
     auth,
     [
-      check("school", "School is required").not().isEmpty(),
-      check("degree", "Degree is required").not().isEmpty(),
-      check("fieldofstudy", "Field of study is required").not().isEmpty(),
-      check("from", "From date is required and needs to be from the past")
+      check("title", "Title is required").not().isEmpty(),
+      check("platform", "Platform is required").not().isEmpty(),
+      check("hours", "From date is required and needs to be from the past")
         .not()
-        .isEmpty()
-        .custom((value, { req }) => (req.body.to ? value < req.body.to : true)),
+        .isEmpty(),
     ],
   ],
   async (req, res) => {
@@ -258,30 +243,18 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const {
-      school,
-      degree,
-      fieldofstudy,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
+    const { title, platform, hours } = req.body;
 
-    const newEdu = {
-      school,
-      degree,
-      fieldofstudy,
-      from,
-      to,
-      current,
-      description,
+    const newFave = {
+      title,
+      platform,
+      hours,
     };
 
     try {
       const profile = await Profile.findOne({ user: req.user.id });
 
-      profile.education.unshift(newEdu);
+      profile.favorite.unshift(newFave);
 
       await profile.save();
 
@@ -293,15 +266,15 @@ router.put(
   }
 );
 
-// @route    DELETE api/profile/education/:edu_id
-// @desc     Delete education from profile
+// @route    DELETE api/profile/favorite/:fav_id
+// @desc     Delete favorite game from profile
 // @access   Private
 
-router.delete("/education/:edu_id", auth, async (req, res) => {
+router.delete("/favorite/:fav_id", auth, async (req, res) => {
   try {
     const foundProfile = await Profile.findOne({ user: req.user.id });
-    foundProfile.education = foundProfile.education.filter(
-      (edu) => edu._id.toString() !== req.params.edu_id
+    foundProfile.favorite = foundProfile.favorite.filter(
+      (fav) => fav._id.toString() !== req.params.fav_id
     );
     await foundProfile.save();
     return res.status(200).json(foundProfile);
