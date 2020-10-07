@@ -70,7 +70,7 @@ const AddFavorite = ({ addFavorite, history }) => {
   );
 };
 
-AddEducation.propTypes = {
+AddFavorite.propTypes = {
   addFavorite: PropTypes.func.isRequired,
 };
 

@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
-import ProfileExperience from "./ProfileExperience";
-import ProfileEducation from "./ProfileEducation";
+import ProfileRecent from "./ProfileRecent";
+import ProfileFavorite from "./ProfileFavorite";
 import { getProfileById } from "../../actions/profile";
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
@@ -34,34 +34,28 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
             <div className="profile-exp bg-white p-2">
-              <h2 className="text-primary">Experience</h2>
-              {profile.experience.length > 0 ? (
+              <h2 className="text-primary">Recently Played Games</h2>
+              {profile.recent.length > 0 ? (
                 <Fragment>
-                  {profile.experience.map((experience) => (
-                    <ProfileExperience
-                      key={experience._id}
-                      experience={experience}
-                    />
+                  {profile.recent.map((recent) => (
+                    <ProfileRecent key={recent._id} recent={recent} />
                   ))}
                 </Fragment>
               ) : (
-                <h4>No experience credentials</h4>
+                <h4>No recently played games</h4>
               )}
             </div>
 
             <div className="profile-edu bg-white p-2">
-              <h2 className="text-primary">Education</h2>
-              {profile.education.length > 0 ? (
+              <h2 className="text-primary">Favorite Games</h2>
+              {profile.favorite.length > 0 ? (
                 <Fragment>
-                  {profile.education.map((education) => (
-                    <ProfileEducation
-                      key={education._id}
-                      education={education}
-                    />
+                  {profile.favorite.map((favorite) => (
+                    <ProfileFavorite key={favorite._id} favorite={favorite} />
                   ))}
                 </Fragment>
               ) : (
-                <h4>No education credentials</h4>
+                <h4>No favorite games</h4>
               )}
             </div>
           </div>
