@@ -1,4 +1,4 @@
-# gamer-pal
+# Gamer-Pal
 A social network for gamers made using Mongo DB, Express, React JS, and Node JS.
 
 ## Live Demo 
