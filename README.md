@@ -11,3 +11,19 @@ https://gamer-pal.herokuapp.com/
 • Express JS
 • MongoDB
 
+## Installing
+1. Install dependencies 
+```
+npm i && cd client && npm i && cd ..
+```
+2. Create default.json file in config folder and set values for MongoURI and jwtSecret 
+```
+{
+  "mongoURI": "YourMongoURI",
+  "jwtSecret": "YourJWT"
+}
+```
+3. Run Project 
+```
+npm run dev
+```
