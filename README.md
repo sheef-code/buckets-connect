@@ -2,7 +2,7 @@
 A social network for gamers made using Mongo DB, Express, React JS, and Node JS.
 
 ## Live Demo 
-https://gamer-pal.herokuapp.com/
+https://www.gamer-pal.com/
 
 ## Technologies Used 
 • React 
